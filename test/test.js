@@ -49,4 +49,11 @@ describe('cu', function () {
       Cu.containsAny(coll, [4,5, 6]).should.equal(false)
     })
   })
+
+  describe('trim', function () {
+    it('removes null or undefined elements from an array', function () {
+      var arr = [1,2,3,4,false,null,undefined,5]
+      Cu.trim(arr).should.deep.equal([1,2,3,4,false,5])
+    })
+  })
 })

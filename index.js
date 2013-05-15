@@ -33,4 +33,10 @@ Cu.containsAny = function (colA, colB, comparatorFn) {
 }
 Cu.containsSome = Cu.containsAny
 
+Cu.trim = function (col) {
+  return col.filter(function (item) {
+    return item !== undefined && item !== null
+  })
+}
+
 module.exports = Cu
