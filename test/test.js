@@ -56,4 +56,29 @@ describe('cu', function () {
       Cu.trim(arr).should.deep.equal([1,2,3,4,false,5])
     })
   })
+
+  describe('indexBy', function () {
+    it('returns a dictionary of things of index-value pairs', function () {
+      var objs = [
+        {name: 'k', id: 2},
+        {name: 'j', id: 23}
+      ]
+      var indexed = Cu.indexBy(objs, function (x) { return x.name} )
+      indexed.k.should.equal(objs[0])
+      indexed.j.should.equal(objs[1])
+    })
+  })
+
+  describe('to', function () {
+    it('creates accessor functions', function () {
+      var toName = Cu.to('name')
+      toName.should.be.a('function')
+      toName({name: 'foo'}).should.equal('foo')
+    })
+    it('is memoized', function () {
+      var toName = Cu.to('name')
+      var toName2 = Cu.to('name')
+      toName.should.equal(toName2)
+    })
+  })
 })

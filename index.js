@@ -39,4 +39,16 @@ Cu.trim = function (col) {
   })
 }
 
+Cu.indexBy = function (col, scalarFn) {
+  return col.reduce(function (i, val) {
+    i[scalarFn(val)] = val
+    return i
+  }, {})
+}
+
+var toMemo = {}
+Cu.to = function (prop) {
+  return toMemo[prop] || (toMemo[prop] = function (obj) { return obj[prop] })
+}
+
 module.exports = Cu
