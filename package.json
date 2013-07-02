@@ -2,7 +2,7 @@
   "name": "cu",
   "author": "Agile Diagnosis <hello@agilediagnosis.com>",
   "contributors": ["jden <jason@denizac.org>"],
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Copper - collection utilities",
   "keywords": [
     "copper",
