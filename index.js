@@ -51,4 +51,25 @@ Cu.to = function (prop) {
   return toMemo[prop] || (toMemo[prop] = function (obj) { return obj[prop] })
 }
 
+// type Predicate: (Value) => Boolean
+
+// (col: Array, predicate: Predicate, trueFn: (Array) => Value, falseFn: (Array) => Value) => [Value, Value]
+// Sorts a collection into two collections by a predicate, then applies them to a function for the true and false subsets.
+Cu.fork = function (col, predicate, trueFn, falseFn) {
+  var binned = col.reduce(function (acc, ele) {
+    if (predicate(ele)) {
+      // trues go in 1 (binary true)
+      acc[1].push(ele)
+    } else {
+      acc[0].push(ele)
+    }
+    return acc
+  }, [[],[]])
+
+  return [
+    trueFn(binned[1]),
+    falseFn(binned[0])
+  ]
+}
+
 module.exports = Cu

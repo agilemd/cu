@@ -81,4 +81,32 @@ describe('cu', function () {
       toName.should.equal(toName2)
     })
   })
+
+  describe('fork', function () {
+    it('splits a collection by a predicate', function () {
+      var nums = [0,1,2,3,4,5,6,7,8,9]
+      var isEven = function (x) { return x % 2 === 0 }
+      Cu.fork(
+        nums,
+        isEven,
+        function evens (ns) {
+          ns.forEach(function (n) {
+            isEven(n).should.equal(true)
+          })
+          ns.should.deep.equal([0,2,4,6,8])
+        },
+        function odds (ns) {
+          ns.forEach(function (n) {
+            isEven(n).should.equal(false)
+          })
+          ns.should.deep.equal([1,3,5,7,9])
+        })
+    })
+    it('returns a 2-tuple of return values from the trueFn and falseFn', function () {
+      var vals = [true, true, false, true]
+      var identity = function (x) { return x }
+      var count = function (x) { return x.length }
+      Cu.fork(vals, identity, count, count).should.deep.equal([3, 1])
+    })
+  })
 })

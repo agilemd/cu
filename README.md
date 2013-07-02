@@ -29,6 +29,16 @@ Returns `true` if a collection is a superset of a second collection
 
 Returns `true` if a collection intersects with a second collection
 
+### `Cu.fork(col: Array, predicate: Predicate, trueFn: (Array) => Value, falseFn: (Array) => Value) => [Value, Value]`
+
+
+```
+type Predicate: (Value) => Boolean
+```
+
+Splits by a predicate, then applies them to a function for the true and false subsets. It returns a 2-tuple of the return value of the `trueFn` and `falseFn`, respectively.
+
+
 ### `Cu.trim(col: Array) => Array`
 
 Returns the compacted Array with all `null` or `undefined` elements removed
