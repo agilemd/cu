@@ -72,4 +72,11 @@ Cu.fork = function (col, predicate, trueFn, falseFn) {
   ]
 }
 
+// (col: Array, predicate: Predicate, trueFn: (Array) => Value, falseFn: (Array) => Value) => Array
+// Sorts a collection into two collections by a predicate, then applies them to a function for the true and false subsets. Flattens the results.
+Cu.forkFlat = function (col, predicate, trueFn, falseFn) {
+  var forked = Cu.fork(col, predicate, trueFn, falseFn)
+  return [].concat(forked[0], forked[1])
+}
+
 module.exports = Cu

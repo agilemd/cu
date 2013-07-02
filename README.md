@@ -38,6 +38,10 @@ type Predicate: (Value) => Boolean
 
 Splits by a predicate, then applies them to a function for the true and false subsets. It returns a 2-tuple of the return value of the `trueFn` and `falseFn`, respectively.
 
+### `Cu.forkFlat(col: Array, predicate: Predicate, trueFn: (Array) => Value, falseFn: (Array) => Value) => Flat`
+
+Splits by a predicate, then applies them to a function for the true and false subsets. It returns a 2-tuple of the return value of the `trueFn` and `falseFn`, respectively. Flattens the result by 1 level.
+
 
 ### `Cu.trim(col: Array) => Array`
 

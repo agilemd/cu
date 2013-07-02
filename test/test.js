@@ -109,4 +109,13 @@ describe('cu', function () {
       Cu.fork(vals, identity, count, count).should.deep.equal([3, 1])
     })
   })
+  describe('forkFlat', function () {
+    it('is like Cu.fork, but it flattens the result', function () {
+      var vals = [1,1,1,2,2]
+      var isEven = function (x) { return x % 2 === 0 }
+      var identity = function (x) { return x }
+      var triple = function (x) { return x.map(function(n) { return 3*n }) }
+      Cu.forkFlat(vals, isEven, triple, identity).should.deep.equal([6,6,1,1,1])
+    })
+  })
 })
