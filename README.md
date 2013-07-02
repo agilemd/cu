@@ -75,4 +75,4 @@ From package root:
 
 ## license
 
-MIT. (c) 2013 Agile Diagnosis <hello@agilediagnosis.com>. See LICENSE.md
+MIT. (c) 2013 AgileMD <opensource@agilemd.com>. See LICENSE.md
