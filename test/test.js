@@ -1,6 +1,7 @@
 var chai = require('chai')
 chai.should()
 chai.use(require('chai-interface'))
+var lug = require('lug')
 
 describe('cu', function () {
   var Cu = require('../')
@@ -109,6 +110,7 @@ describe('cu', function () {
       Cu.fork(vals, identity, count, count).should.deep.equal([3, 1])
     })
   })
+
   describe('forkFlat', function () {
     it('is like Cu.fork, but it flattens the result', function () {
       var vals = [1,1,1,2,2]
@@ -116,6 +118,25 @@ describe('cu', function () {
       var identity = function (x) { return x }
       var triple = function (x) { return x.map(function(n) { return 3*n }) }
       Cu.forkFlat(vals, isEven, triple, identity).should.deep.equal([6,6,1,1,1])
+    })
+  })
+
+  describe('flat', function () {
+    it('peels back a layer', function () {
+      Cu.flat([[1],[2]]).should.deep.equal([1,2])
+    })
+  })
+
+  describe('cartesianSquare', function () {
+
+    it('eg', function () {
+      Cu.cartesianSquare([1],[2]).should.deep.equal([[1, 2]])
+      Cu.cartesianSquare([1,2],[3,4]).should.deep.equal([
+        [1,3],
+        [1,4],
+        [2,3],
+        [2,4]
+      ])
     })
   })
 })

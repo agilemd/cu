@@ -79,4 +79,21 @@ Cu.forkFlat = function (col, predicate, trueFn, falseFn) {
   return [].concat(forked[0], forked[1])
 }
 
+Cu.flat = function (arr) {
+  return arr.reduce(function (acc, el) {
+    return acc.concat(el)
+  }, [])
+}
+
+
+// set operators
+
+Cu.cartesianSquare = function (a, b) {
+  return a.reduce(function (acc, ela) {
+    return acc.concat(b.map(function (elb) {
+      return [ela, elb]
+    }))
+  }, [])
+}
+
 module.exports = Cu
