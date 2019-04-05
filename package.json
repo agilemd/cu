@@ -1,8 +1,8 @@
 {
   "name": "cu",
-  "author": "AgileMD <opensource@agilemd.com>",
+  "author": "juno@suarez.email",
   "contributors": [
-    "jden <jason@denizac.org>"
+    "juno@suarez.email"
   ],
   "version": "0.6.0",
   "description": "Copper - collection utilities",
@@ -12,9 +12,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha"
+    "test": "mocha"
   },
-  "repository": "git@github.com:agilemd/cu.git",
+  "repository": "git@github.com:junosuarez/cu.git",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
